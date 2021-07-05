@@ -61,7 +61,7 @@ build:
   stage: buildAndPushImage
   script:
     - echo $CI_PROJECT_NAME
-    - "name=$( tr A-Z a-z <<< $CI_PROJECT_NAME )"
+    - "name=$( echo $CI_PROJECT_NAME | tr A-Z a-z )"
     - docker info
     - docker build $CI_PROJECT_DIR -t 192.168.1.104:5000/hitices/$name:last_ci
     - docker push 192.168.1.104:5000/hitices/$name:last_ci
