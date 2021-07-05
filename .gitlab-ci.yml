@@ -60,7 +60,8 @@ before_script:
 build:
   stage: buildAndPushImage
   script:
+    - 'name=${CI_PROJECT_NAME,,}'
     - docker info
-    - docker build $CI_PROJECT_DIR -t 192.168.1.104:5000/hitices/${CI_PROJECT_NAME,,}:last_ci
-    - docker push 192.168.1.104:5000/hitices/${CI_PROJECT_NAME,,}:last_ci
+    - docker build $CI_PROJECT_DIR -t 192.168.1.104:5000/hitices/$name:last_ci
+    - docker push 192.168.1.104:5000/hitices/$name:last_ci
   image: docker:git
