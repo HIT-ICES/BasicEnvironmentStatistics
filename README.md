@@ -9,4 +9,4 @@
 
 具体详情请见配置文件。
 
-使用时，fork 后**务必确保修改** `pom.xml` 以及 `applications.yaml` 中的项目名称
+### 使用时，fork 后**务必确保修改** `pom.xml` 以及 `applications.yaml` 中的项目名称
