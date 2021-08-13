@@ -2,7 +2,7 @@ server:
   port: 8080
 spring:
   application:
-    name: BasicOCR
+    name: BasicEnvironmentStatistics
 eureka:
   instance:
     prefer-ip-address: true
