@@ -29,5 +29,5 @@
 |/statistic/schema/remove|模式ID|被删除的模式|删除指定模式|POST|
 |/statistic/data/get|数据ID|数据|获取特定Id的数据|POST|
 |/statistic/data/select|模式ID，时间范围|一组数据|获取所有符合指定要求的数据|POST|
-|/statistic/schema/insert|模式ID，一组数据|成功插入的数据条数|插入指定的一组数据|POST|
-|/statistic/schema/remove|一组数据ID|成功删除的条数|删除指定的数据|POST|
+|/statistic/data/insert|模式ID，一组数据|成功插入的数据条数|插入指定的一组数据|POST|
+|/statistic/data/remove|一组数据ID|成功删除的条数|删除指定的数据|POST|

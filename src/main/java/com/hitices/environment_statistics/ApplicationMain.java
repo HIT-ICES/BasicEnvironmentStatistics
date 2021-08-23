@@ -1,12 +1,12 @@
-package com.hitices.ocr;
+package com.hitices.environment_statistics;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 /**
- * @author septemberhx
- * @date 2021/7/5
+ * @author ferdinandsu
+ * @date 2021/8/18
  **/
 
 @EnableEurekaClient
