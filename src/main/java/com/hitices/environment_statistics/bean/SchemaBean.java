@@ -25,9 +25,9 @@ public class SchemaBean
     @AllArgsConstructor
     @NoArgsConstructor
     public static class SchemaFieldBean{
-        public String name;
-        public String description;
-        public FieldType type;
-        public String value;
+        private String name;
+        private String description;
+        private FieldType type;
+        private String value;
     }
 }
