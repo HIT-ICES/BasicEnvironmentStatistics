@@ -1,5 +1,6 @@
 package com.hitices.environment_statistics.controller;
 
+import com.hitices.common.MResponse;
 import com.hitices.environment_statistics.bean.IdBean;
 import com.hitices.environment_statistics.bean.SchemaBean;
 import com.hitices.environment_statistics.service.SchemaService;
@@ -21,27 +22,21 @@ public class StatisticSchemaController extends ControllerBase
     private SchemaService schemaService;
 
     @PostMapping(value = "/get")
-    public ActionResult<SchemaBean> get(@RequestBody IdBean id)
+    public MResponse get(@RequestBody IdBean id)
     {
         Optional<SchemaBean> schema= schemaService.get(id.getId());
-        if(schema.isPresent()){
-            return Ok(schema.get());
-        }
-        return Failed();
+        return schema.map(ControllerBase::Ok).orElseGet(ControllerBase::Failed);
     }
 
     @PostMapping(value = "/remove")
-    public ActionResult<SchemaBean> remove(@RequestBody IdBean id)
+    public MResponse remove(@RequestBody IdBean id)
     {
         Optional<SchemaBean> schema= schemaService.remove(id.getId());
-        if(schema.isPresent()){
-            return Ok(schema.get());
-        }
-        return Failed();
+        return schema.map(ControllerBase::Ok).orElseGet(ControllerBase::Failed);
     }
 
     @PostMapping(value = "/add")
-    public ActionResult<String> add(@RequestBody SchemaBean schema)
+    public MResponse add(@RequestBody SchemaBean schema)
     {
         return Ok(schemaService.create(schema));
     }
