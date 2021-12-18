@@ -15,7 +15,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class SelectBean
 {
-    private String schemaId;
+    private String type;
     private Date start;
     private Date end;
 

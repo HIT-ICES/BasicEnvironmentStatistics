@@ -1,15 +1,16 @@
 package com.hitices.environment_statistics.service;
 
-import com.hitices.environment_statistics.bean.BatchInsertBean;
-import com.hitices.environment_statistics.bean.DatumBean;
 import com.hitices.environment_statistics.bean.SelectBean;
 
-import java.util.Optional;
+import java.text.SimpleDateFormat;
+import java.util.List;
+import java.util.Map;
 
 public interface DataService
 {
-    String[] insert(BatchInsertBean data);
-    int remove(String[] ids);
-    String[] select(SelectBean filter);
-    Optional< DatumBean> get(String id);
+    SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyyMMdd HH:mm:ss:SSSSSS");
+
+    String[] insert(List<Map<String, String>> data);
+
+    List<Map<String, String>> select(SelectBean filter);
 }

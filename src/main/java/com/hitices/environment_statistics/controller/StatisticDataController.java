@@ -1,40 +1,31 @@
 package com.hitices.environment_statistics.controller;
 
 import com.hitices.common.MResponse;
-import com.hitices.environment_statistics.bean.*;
+import com.hitices.environment_statistics.bean.SelectBean;
 import com.hitices.environment_statistics.service.DataService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Optional;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/statistic/data")
 public class StatisticDataController extends ControllerBase
 {
-    @Autowired
-    @Qualifier("DataServiceImpl")
-    private DataService dataService;
+    private final DataService dataService;
 
-    @PostMapping(value = "/get")
-    public MResponse get(@RequestBody IdBean id)
+    public StatisticDataController(@Qualifier("DataServiceImpl") DataService dataService)
     {
-        Optional<DatumBean> datum = dataService.get(id.getId());
-        return datum.map(ControllerBase::Ok).orElseGet(ControllerBase::Failed);
+        this.dataService = dataService;
     }
 
-    @PostMapping(value = "/remove")
-    public MResponse remove(@RequestBody BatchRemoveBean ids)
-    {
-        return Ok(dataService.remove(ids.getId()));
-    }
 
     @PostMapping(value = "/insert")
-    public MResponse insert(@RequestBody BatchInsertBean data)
+    public MResponse insert(@RequestBody List<Map<String, String>> data)
     {
         return Ok(dataService.insert(data));
     }

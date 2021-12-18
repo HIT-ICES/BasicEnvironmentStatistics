@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface DatumRepository extends JpaRepository<Datum, String>
 {
-    List<Datum> findAllBySchemaIdAndUpdateTimeBetween(String schemaId, Date start, Date end);
+    List<Datum> findAllByTypeAndUpdateTimeBetween(String type, Date start, Date end);
 
 }

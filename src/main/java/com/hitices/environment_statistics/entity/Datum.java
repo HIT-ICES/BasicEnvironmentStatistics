@@ -3,14 +3,10 @@ package com.hitices.environment_statistics.entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @Getter
 @Setter
@@ -25,9 +21,9 @@ public class Datum
     @Column(name = "Id")
     private String id;
 
-    @Column(name = "SchemaId")
-    private String schemaId;
-
+    @Column(name = "Type")
+    private String type;
+//从传感器数据字段【time】获取
     @Column(name = "UpdateTime")
     private Date updateTime;
 
