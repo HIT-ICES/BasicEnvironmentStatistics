@@ -9,7 +9,7 @@ variables:
   SONAR_HOST_URL: "http://192.168.1.102:9000"
   SONAR_USER_HOME: /home/scanner-cli/
   GIT_DEPTH: 0
-  
+
 # Cache downloaded dependencies and plugins between builds.
 # To keep cache across branches add 'key: "$CI_JOB_NAME"'
 cache:
@@ -44,7 +44,7 @@ sonarqube-check:
 validate:jdk8:
   <<: *validate
   image: maven:3.3.9-jdk-8
-  
+
 package:
   stage: package
   script:
@@ -64,5 +64,6 @@ build:
     - "name=$( echo $CI_PROJECT_NAME | tr A-Z a-z )"
     - docker info
     - docker build $CI_PROJECT_DIR -t 192.168.1.102:5000/mss/$name:last_ci
+    - docker login 192.168.1.102:5000 -u 'robot$harbor_robot' -p '8ZpPV3xg28jxj6Sz4ZUEIM2zfdqabF2g'
     - docker push 192.168.1.102:5000/mss/$name:last_ci
   image: docker:git
