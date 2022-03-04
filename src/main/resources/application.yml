@@ -3,18 +3,19 @@ server:
 spring:
   application:
     name: basicenvironmentstatistics
-    datasource:
-      url: jdbc:mysql://127.0.0.1:3306/basicenvironmentstatistics?serverTimezone=CTT
-      username: mcs_bot
-      password: "ZH2uSmsQ"
-      driver-class-name: com.mysql.jdbc.Driver
-    jpa:
-      hibernate:
-        ddl-auto: none
-      show-sql: true
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/basicenvironmentstatistics?serverTimezone=CTT
+    username: mcs_bot
+    password: ZH2uSmsQ
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
 eureka:
   instance:
     prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
   client:
     register-with-eureka: true
     fetch-registry: true
