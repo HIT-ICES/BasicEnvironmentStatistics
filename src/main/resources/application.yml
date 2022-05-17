@@ -1,17 +1,27 @@
+spring:
+  profiles:
+    active: "k8s"
+---
 server:
   port: 8080
+
 spring:
   application:
-    name: basicenvironmentstatistics
+    name: BasicEnvironmentStatistics
+  config:
+    activate:
+      on-profile: "k8s"
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/basicenvironmentstatistics?serverTimezone=CTT
-    username: mcs_bot
-    password: ZH2uSmsQ
+    url: jdbc:mysql://${MYSQLHOST:127.0.0.1}:3306/statistics?createDatabaseIfNotExist=true&serverTimezone=CTT
+    username: root
+    password: root
     driver-class-name: com.mysql.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
     show-sql: true
+    database: mysql
+
 eureka:
   instance:
     prefer-ip-address: true
@@ -21,3 +31,40 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://${REGISTRY_IP}:${REGISTRY_PORT}/eureka
+
+
+---
+server:
+  port: 8080
+spring:
+  application:
+    name: BasicEnvironmentStatistics
+  config:
+    activate:
+      on-profile: "shiyanshi"
+  datasource:
+    #    url: jdbc:mysql://172.20.89.20:3306/NotificationService?serverTimezone=CTT
+    url: jdbc:mysql://192.168.1.102:3306/notification?serverTimezone=CTT
+    #    url: jdbc:mysql://192.168.0.107:3306/NotificationService?serverTimezone=CTT
+    username: root
+    password: HIT_ices_504
+    #    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://${REGISTRY_IP}:${REGISTRY_PORT}/eureka
+#      defaultZone: http://127.0.0.1:8000/eureka
+
