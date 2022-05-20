@@ -11,7 +11,7 @@ import java.util.Date;
 
 @Getter
 @Setter
-@AllArgsConstructor
+@AllArgsConstructor 
 @NoArgsConstructor
 public class SelectBean
 {

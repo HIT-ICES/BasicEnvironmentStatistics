@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: "k8s"
+    active: "dev"
 ---
 server:
   port: 8080
@@ -15,7 +15,7 @@ spring:
     url: jdbc:mysql://${MYSQLHOST:127.0.0.1}:3306/statistics?createDatabaseIfNotExist=true&serverTimezone=CTT
     username: root
     password: root
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: update
@@ -41,20 +41,23 @@ spring:
     name: BasicEnvironmentStatistics
   config:
     activate:
-      on-profile: "shiyanshi"
+      on-profile: "dev"
   datasource:
     #    url: jdbc:mysql://172.20.89.20:3306/NotificationService?serverTimezone=CTT
-    url: jdbc:mysql://192.168.1.102:3306/notification?serverTimezone=CTT
+    url: jdbc:mysql://localhost:3306/statistics?createDatabaseIfNotExist=true
     #    url: jdbc:mysql://192.168.0.107:3306/NotificationService?serverTimezone=CTT
-    username: root
-    password: HIT_ices_504
+    username: mcs_bot
+    password: qfkZO8W1ih8WOgWK
     #    password: 123456
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
 
 
 eureka:
@@ -65,6 +68,6 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://${REGISTRY_IP}:${REGISTRY_PORT}/eureka
+      defaultZone: http://localhost:8761/eureka
 #      defaultZone: http://127.0.0.1:8000/eureka
 
