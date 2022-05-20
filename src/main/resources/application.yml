@@ -12,7 +12,7 @@ spring:
     activate:
       on-profile: "k8s"
   datasource:
-    url: jdbc:mysql://${MYSQLHOST:127.0.0.1}:3306/statistics?createDatabaseIfNotExist=true&serverTimezone=CTT
+    url: jdbc:mysql://${MYSQLHOST:127.0.0.1}:3306/statistics?createDatabaseIfNotExist=true
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
