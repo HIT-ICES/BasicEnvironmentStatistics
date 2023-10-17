@@ -4,5 +4,4 @@
 # including this in ignore list to avoid accident changes
 
 *.idea
-target
 *.iml
