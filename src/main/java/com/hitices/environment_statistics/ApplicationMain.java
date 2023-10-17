@@ -10,7 +10,6 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  * @date 2021/8/18
  **/
 
-@EnableEurekaClient
 @SpringBootApplication(exclude = {GsonAutoConfiguration.class})
 public class ApplicationMain {
     public static void main(String[] args) {

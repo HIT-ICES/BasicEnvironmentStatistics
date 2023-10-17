@@ -22,13 +22,4 @@ spring:
     show-sql: true
     database: mysql
 
-eureka:
-  instance:
-    prefer-ip-address: true
-    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://${REGISTRY_IP}:${REGISTRY_PORT}/eureka
 
