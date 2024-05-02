@@ -1,7 +1,9 @@
 package com.hitices.environment_statistics.controller;
 
 import com.hitices.common.MResponse;
+import io.swagger.annotations.Api;
 
+@Api(tags = "Data Controller")
 public class ControllerBase
 {
 

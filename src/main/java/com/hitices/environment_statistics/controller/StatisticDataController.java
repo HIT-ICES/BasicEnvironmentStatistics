@@ -3,6 +3,7 @@ package com.hitices.environment_statistics.controller;
 import com.hitices.common.MResponse;
 import com.hitices.environment_statistics.bean.SelectBean;
 import com.hitices.environment_statistics.service.DataService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@Api(tags = "Data Controller")
 @RequestMapping("/statistic/data")
 public class StatisticDataController extends ControllerBase
 {
