@@ -5,23 +5,7 @@ metadata:
 type: kubernetes.io/basic-auth
 stringData:
   password: W0Kg49+fyQZ!liVo # change this to a secure password
-#---
-# apiVersion: v1
-# kind: PersistentVolumeClaim
-# metadata:
-#   name: BasicEnvironmentStatistics-mysql-pvc
-# spec:
-#   accessModes:
-#     - ReadWriteOnce
-#   resources:
-#     requests:
-#       storage: 1Gi
-#   selector:
-#     matchLabels:
-#       app: BasicEnvironmentStatistics-mysql
-#   storageClassName: nfs-storage
 ---
-# mysql-deployment.yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -54,17 +38,10 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: BasicEnvironmentStatistics-mysql-secret # reference the secret created above, change this to the desired name if needed 
-                  key: password # reference the key in the secret, change this to the desired key if needed 
-          volumeMounts:
-            - mountPath: "/var/lib/mysql"
-              name: mysql-data
+                  key: password # reference the key in the secret, change this to the desired key if needed
           ports:
             - containerPort: 3306 # change this to the desired port if needed 
-              name: mysql # change this to the desired name if needed 
-      volumes:
-        - name: mysql-data
-          persistentVolumeClaim:
-            claimName: BasicEnvironmentStatistics-mysql-pvc
+              name: mysql # change this to the desired name if needed
 ---
 apiVersion: v1
 kind: Service
